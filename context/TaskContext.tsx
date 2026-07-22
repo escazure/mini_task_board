@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { Task } from "@/types/task";
 
 const initialTasks: Task[] = [
@@ -14,13 +14,20 @@ const initialTasks: Task[] = [
 
 interface TaskContextType {
     tasks: Task[];
+    addTask: (newTask: Task) => void;
 }
 
 export const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export function TaskProvider({ children }: { children: React.ReactNode}){
+    const [tasks, setTasks] = useState<Task[]>(initialTasks);
+
+    const addTask = (newTask: Task) => {
+        setTasks((prevTasks) => [newTask, ...prevTasks]);
+    }
+
     return (
-        <TaskContext.Provider value={{ tasks: initialTasks }}>
+        <TaskContext.Provider value={{ tasks, addTask }}>
             {children}
         </TaskContext.Provider>
     );

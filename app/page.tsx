@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { TaskContext } from "@/context/TaskContext";
 import { TaskStatus } from "@/types/task";
 import Link from "next/link";
+import TaskForm from "@/components/TaskForm";
 
 export default function HomePage(){
     const context = useContext(TaskContext);
@@ -20,22 +21,27 @@ export default function HomePage(){
     });
 
     return (
-        <div>
-            <div style={{ marginBottom: "16px", display: "flex", gap: "8px" }}>
-                {filterOptions.map((filterOption) => (
-                    <button 
-                        key={filterOption} 
-                        onClick={() => setFilter(filterOption as TaskStatus | "all")}
-                        style={{ fontWeight: filter === filterOption ? "bold" : "normal"}}>
-                        {filterOption}
-                    </button>
-                ))}
+        <div style={{ display: "flex", flexDirection: "row", gap: "100px"}}>
+            <div>
+                <div style={{ marginBottom: "16px", display: "flex", gap: "8px" }}>
+                    {filterOptions.map((filterOption) => (
+                        <button 
+                            key={filterOption} 
+                            onClick={() => setFilter(filterOption as TaskStatus | "all")}
+                            style={{ fontWeight: filter === filterOption ? "bold" : "normal"}}>
+                            {filterOption}
+                        </button>
+                    ))}
+                </div>
+                <ul>
+                    {filteredTasks.map((task) => (
+                        <li key={task.id}><strong>{task.title}</strong>: {task.status} | <Link href={`/tasks/${task.id}`}><strong>Details</strong></Link></li>
+                    ))}
+                </ul>
             </div>
-            <ul>
-                {filteredTasks.map((task) => (
-                    <li key={task.id}><strong>{task.title}</strong>: {task.status} | <Link href={`/tasks/${task.id}`}><strong>Details</strong></Link></li>
-                ))}
-            </ul>
+            <div>
+                <TaskForm/>
+            </div>
         </div>
     );
 }
