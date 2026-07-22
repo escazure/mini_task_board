@@ -32,7 +32,7 @@ export default function HomePage(){
             </div>
             <ul>
                 {filteredTasks.map((task) => (
-                    <li key={task.id}><strong>{task.title}</strong>: {task.description} <strong>{task.status}</strong></li>
+                    <li key={task.id}><strong>{task.title}</strong>: {task.status}</li>
                 ))}
             </ul>
         </div>
