@@ -16,7 +16,7 @@ interface TaskContextType {
     tasks: Task[];
 }
 
-const TaskContext = createContext<TaskContextType | undefined>(undefined);
+export const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export function TaskProvider({ children }: { children: React.ReactNode}){
     return (
