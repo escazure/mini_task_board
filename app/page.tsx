@@ -21,9 +21,9 @@ export default function HomePage(){
     });
 
     return (
-        <div style={{ display: "flex", flexDirection: "row", gap: "100px"}}>
+        <div style={{ display: "flex", flexDirection: "row", gap: "10px"}}>
             <div>
-                <div style={{ marginBottom: "16px", display: "flex", gap: "8px" }}>
+                <div style={{ marginBottom: "16px", display: "flex", gap: "8px" }} className="border p-3">
                     {filterOptions.map((filterOption) => (
                         <button 
                             key={filterOption} 
@@ -33,7 +33,7 @@ export default function HomePage(){
                         </button>
                     ))}
                 </div>
-                <ul>
+                <ul className="border p-3">
                     {filteredTasks.map((task) => (
                         <li key={task.id}><strong>{task.title}</strong>: {task.status} | <Link href={`/tasks/${task.id}`}><strong>Details</strong></Link></li>
                     ))}

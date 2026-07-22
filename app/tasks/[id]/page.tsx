@@ -25,12 +25,12 @@ export default function TaskDetailPage({ params }: { params: Promise<{id: string
     }
 
     return (
-        <div>
+        <div className="border p-3 w-fit">
             <h1 className="text-2xl font-bold">{task.title}</h1>
             <p>{task.description}</p>
-            Status: <strong>{task.status}</strong>
+            Status: <i>{task.status}</i>
             <br/>
-            <Link href="/">Return to main page</Link>
+            <Link href="/"><strong>Return to main page</strong></Link>
         </div>
     );
 }

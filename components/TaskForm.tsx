@@ -38,8 +38,8 @@ export default function TaskForm(){
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {error && <p>{error}</p>}
+        <form onSubmit={handleSubmit} className="border p-3">
+            {error && <p className="text-red-500">{error}</p>}
             <label>Title: </label>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="border"></input>
             <br/>
