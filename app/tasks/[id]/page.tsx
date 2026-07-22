@@ -17,9 +17,9 @@ export default function TaskDetailPage({ params }: { params: Promise<{id: string
 
     if(!task){
         return (
-            <div>
+            <div className="border p-3 w-fit">
                 <h1>Task with ID {id} is missing</h1>
-                <Link href="/">Return to main page</Link>
+                <Link href="/"><strong>Return to main page</strong></Link>
             </div>
         );
     }
